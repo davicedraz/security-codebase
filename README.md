@@ -2,4 +2,5 @@
 Repositório para os códigos da Disciplina de Segurança da Informação - UFC
 
 - Atividade 01 - Implementação da Criptografia Playfair
-- Atividade 03 - Respostas para as perguntas da aula S03E02
+- Atividade 02 - Implementação do Algoritmo de Vigenere e tentativas de descriptografia da mensagem
+- Atividade 03 - Respostas para as perguntas da Aula S03E02
