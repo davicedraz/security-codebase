@@ -2,6 +2,8 @@ alphabet = "abcdefghijklmnopqrstuvwxyz".upper()
 
 text = "mllvo gjw axie, viog vlgbg dfptll n zoe fe gyyom j xof nr tuegr fg tfusfe ayqwxt rrpjnfy xg, mlm nbnju, tphuc kzg fltrf i ytamuyvi ig pzi qs or rrzzrgmtt spg acwfq, ux nnz xj eiqln ry akgphrfy"
 
+decriptedMessage = ""
+
 def vetorize(string):
     listText = []
     for letter in string:
@@ -23,7 +25,7 @@ def normalizeKey(text, key):
             keyNormalized += letter
         else:
             aux = ""          
-
+            
             aux = key[0]
             key.pop(0)
             keyNormalized += aux
@@ -56,7 +58,7 @@ def main():
     for line in documentKeys.readlines():
         
         line = line.replace("\n", "")
-        line = line[:len(line) - 1]
+        #line = line[:len(line) - 1]
 
         #no documento, cada linha de tentativa sera listadas no padrao: Chave $ Texto descriptografado
         decriptedMessage = decript(text, line, alphabet)
