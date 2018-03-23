@@ -52,19 +52,45 @@ def decript(text, key, alphabet):
 
 
 def main(): 
-    documentKeys = open('keys.txt', 'r') #possiveis chaves
-    documentDecripts = open('attempts.txt', 'w') #tentativas
+    documentKeys = open('words.txt', 'r') #possiveis chaves de 4 letras
+    documentDecripts1 = open('attempts.txt', 'w') #tentativas
 
     for line in documentKeys.readlines():
         
-        line = line.replace("\n", "")
-        #line = line[:len(line) - 1]
+        #line = line.replace("\n", "")
+        line = line[:4].upper()
 
-        #no documento, cada linha de tentativa sera listadas no padrao: Chave $ Texto descriptografado
         decriptedMessage = decript(text, line, alphabet)
-        documentDecripts.writelines(line + " $ " + decriptedMessage + "\n")
-
+        
+        if('AMOR' in decriptedMessage):
+            documentDecripts1.writelines(line + "\n")
+        
+    documentDecripts1.close()
     documentKeys.close()
-    documentDecripts.close()
 
+    documentDecripts1 = open('attempts.txt', 'r')
+    documentDecripts2 = open('results.txt', 'w')
+    
+
+    for line in documentDecripts1.readlines():
+
+        documentKeys = open('words.txt', 'r')
+        print(line)
+
+        for rest in documentKeys.readlines():
+
+            rest = rest[:4].upper()
+            line = line[:4].upper()
+
+            decriptedMessage = decript(text, line + rest, alphabet)
+            
+            if('AMOR' in decriptedMessage):
+                #no documento, cada linha de tentativa sera listadas no padrao: Chave $ Texto descriptografado
+                documentDecripts2.writelines(line + rest + " $ " + decriptedMessage + "\n")
+
+            documentKeys.close()
+
+    documentDecripts2.close()
+    documentDecripts1.close()
+    
 main()
