@@ -1,0 +1,131 @@
+	 	 	
+Cenário
+
+Alice e Bob vão se comunicar usando gpg.
+
+Alice gera suas chaves, adicionando a elas um nome Alice e um email alice@alice.com e uma senha
+gpg --gen-key
+1611
+
+Alice adiciona uma(s) foto(s) à sua chave
+gpg --edit-key alice
+addphoto (escolhe a foto e confirma, depois sai usando o comando quit)
+
+Alice deseja publicar sua chave em um servidor de chaves, escolhe o do ubuntu, para isso ela edita o arquivo .gnupg/gpg.conf e adiciona a linha
+keyserver hkp://keyserver.ubuntu.com
+
+Em seguida ela lista as chaves do seu chaveiro para descobrir o número da sua chave pública
+gpg --list-keys
+
+/home/teste/.gnupg/pubring.gpg
+------------------------------
+pub 2048R/87434D9E 2012-02-20
+uid Alice <alice@alice.com>
+uid [jpeg image of size 13555]
+uid [jpeg image of size 18615]
+sub 2048R/CF8BA097 2012-02-20
+
+O número da chave pública de Alice é 87434D9E
+
+Alice envia sua chave para o servidor com o comando
+gpg --send-keys 87434D9E
+
+Alice acessa o site keyserver.ubuntu.com pra checar o recebimento da sua chave
+
+Importando uma chave pública de um arquivo: 
+•gpg --import arquivo 
+Exportando sua chave pública para um arquivo: 
+•gpg -o arquivo --export userID 
+
+
+Alice cria uma mensagem com o texto “eu prometo que pago o jantar”
+echo eu prometo que pago o jantar > alicemsg
+
+Ela assina a mensagem com sua chave privada, gerando o arquivo alicemsg.asc
+gpg --clearsign alicemsg
+
+O arquivo alicemsg.asc contém o texto escrito adicionado de uma assinatura digital que comprova que Alice gerou o texto.
+
+Alice envia alicemsg.asc para Bob.
+
+#$################################################
+
+Bob já possui seu próprio par de chaves e já os publicou no servidor.
+Como Bob não possui a chave pública de Alice ele consulta o servidor para obter a chave.
+gpg --search-keys alice@alice.com
+
+Bob escolhe qual dos usuários apresentados corresponde a Alice e confirma que deseja guardar a chave.
+
+Bob deseja ver a(s) foto(s) anexadas à chave pública de Alice
+gpg --show-photos --list-keys alice@alice.com
+
+Bob verifica a autenticidade do arquivo recebido.
+gpg --verify alicemsg.asc
+
+gpg: Signature made Mon 20 Feb 2012 02:20:58 PM BRT using RSA key ID 87434D9E
+gpg: Good signature from "Alice <alice@alice.com>"
+gpg: aka "[jpeg image of size 13555]"
+gpg: aka "[jpeg image of size 18615]"
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg: There is no indication that the signature belongs to the owner.
+Primary key fingerprint: 1525 424C E450 EB2D FFFA C7E4 83C6 7737 8743 4D9E
+
+O Good garante que a mensagem realmente foi criada com a chave privada de Alice. O WARNING é porque a chave foi autogerada por Alice e não por um CA.
+
+Bob deseja enviar uma mensagem criptografada para Alice para combinar o local de encontro.
+echo o encontro serah em frente a UFC > bobmsg
+
+Depois ele criptografa a mensagem com a chave pública de alice gerando bobmsg.asc
+gpg --armor --recipient alice@alice.com --encrypt bobmsg
+
+Bob envia bobmsg.asc para alice.
+
+##########################%%##########################
+
+Alice recebe a mensagem e deografa
+gpg --decrypt bobmsg.asc
+e lê a mensagem, mas opa! Ela não sabe se foi Bob que enviou, não está autenticada!
+
+########################%%############################
+
+Bob percebe que esqueceu de autenticar e acha que Alice não vai acreditar que foi ele que enviou. Então, envia outra mensagem, dessa vez autenticada.
+echo esqueci de autenticar, foi mal! Em frente a UFC viu! > bobmsg2
+
+gpg --armor --recipient alice@alice.com --encrypt --sign bobmsg2
+
+E gera o arquivo bobmsg2.asc
+
+%%%%%%%%%$$$$$$$$##############################
+
+Alice recebe a nova mensagem e deografa
+gpg --decrypt bobmsg2.asc
+Ela lê a mensagem, mas percebe que não tem a chave de Bob.
+Alice faz o download da chave de bob do server.
+gpg --search-keys bob@bob.com
+
+e enfim consegue checar a autenticidade com o comando
+gpg --decrypt bobmsg2.asc
+
+#############################%
+Alguém invadiu o computador de Alice, copiou sua chave privada e descobriu sua senha. Alice decide revogar(tornar nulo) a chave pública relacionada ao seu certificado no servidor.
+1)Para isso ele gera um certificado de revogação referente à sua chave.
+2)Importa esse certificado ao seu chaveiro inutilizando sua chave.
+3)E envia sua chave revogada para o servidor.
+
+
+1.gpg 	--output revoke.asc --gen-revoke alice@alice.com
+2.gpg --import revoke.asc 	
+3.gpg --keyserver keyserver.ubuntu.com --send-keys 87434D9E
+
+Pronto, a chave de Alice está inutilizada. Agora cabe a ela criar uma nova chave e avisar aos seus amigos.
+
+##################$$$$$$$$###############$$$$$$$$$$$$$$$$$$$
+
+Alice quer enviar o arquivo trabalho.zip pra Bob e junto ao arquivo quer enviar uma assinatura que garanta a integridade e autenticação do arquivo. 
+Alice faz:
+gpg --armor --detach-sign trabalho.zip
+e gera o arquivo trabalho.zip.asc
+
+Bob recebe o arquivo e testa a assinatura fazendo
+gpg --verify trabalho.zip.asc trabalho.zip
+o

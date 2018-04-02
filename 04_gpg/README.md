@@ -65,5 +65,45 @@ Através dos comandos:
 
 
 
+12. Como a chave do Ernandes foi anteriormente importada no passo 9. ela pôde ser verificada:
+
+> gpg --fingerprint 2BDB1C58
+
+13. E logo após, a chave pública do Ernandes foi assinada por mim, confirmando que certifico que a chave pertence a ele:
+
+> gpg --sign-key 2BDB1C58
+
+![Assinatura da chave do ernandes](screenshots/signed-ernandes.png)
+
+Através do comando:
+
+> gpg --keyserver hkp://keyserver.ubuntu.com --send-key 2BDB1C58
+
+13. A chave pública do ernandes foi enviada de volta para o servidor, agora com minha assinatura e certificado de confiança:
+
+![Assinatura da minha chave pelo ernandes](screenshots/trust-ernandes.png)
+
+#### * Todos os passos das atividade foram realizados pelo meu colega, o que resultou na assinatura da minha chave pública:
+
+![Assinatura da chave do ernandes](screenshots/trust-me.png)
+
+Através do comando:
+
+> gpg --gen-revoke -o email.rev 4EF031A3
+
+14. Foi gerado o certificado de revogação 'email.rev'
+
+Por fim, através do comando:
+
+> gpg --import email.rev
+
+15. O certificado de revogação foi importado e a minha chave pública foi revogada 
+
+![Assinatura da chave do ernandes](screenshots/revoked.png)
+
+
+
+
+
 
 
