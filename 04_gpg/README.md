@@ -1,6 +1,6 @@
 # Prática com GPG
 
-- Esta atividade foi feita em dupla. Dada início da aula do dia 26/03 e finalizada com o colega Ernandes Azevedo (https://github.com/ErnandesAJr)
+- Esta atividade foi feita em dupla. Dada início na aula do dia 26/03 e finalizada com o colega Ernandes Azevedo (https://github.com/ErnandesAJr)
 
 ## Relatório
 
@@ -8,7 +8,7 @@ Nessa atividade, gastei mais tempo na reprodução dos passos do tutorial e na r
 
 A prática me ajudou a entender o GPG e como usá-lo. De modo geral, não tive muitas dificuldades e consegui fazer tudo que foi proposto.
 
-## Passos da atividade prática:
+## Passos do tutorial
 
 A chave foi criada através do comando:
 
