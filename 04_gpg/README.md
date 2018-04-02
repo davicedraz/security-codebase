@@ -4,7 +4,7 @@
 
 ## Relatório
 
-Nessa atividade, gastei mais tempo na reprodução dos passos do tutorial e na resolução de problemas que encontrei durante este caminho. Demorou em torno de 4 horas para concluir todos os passos, e talvez mais algumas para alinhar tudo com meu colega, pois dependiámos um do outro para obter as chaves e mensagens para reproduzir o passosdo tutorial.
+Nessa atividade, gastei mais tempo na reprodução dos passos do tutorial e na resolução de problemas que encontrei durante este caminho. Demorou em torno de 4 horas para concluir todos os passos, e talvez mais algumas para alinhar tudo com meu colega, pois dependiámos um do outro para obter as chaves e mensagens para reproduzir o passos do tutorial.
 
 A prática me ajudou a entender o GPG e como usá-lo. De modo geral, não tive muitas dificuldades e consegui fazer tudo que foi proposto.
 
