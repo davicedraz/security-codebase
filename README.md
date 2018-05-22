@@ -1,8 +1,10 @@
 # Security Codes
-Repositório para os códigos da Disciplina de Segurança da Informação - UFC
+Repositório para relatórios e códigos da disciplina de Segurança da Informação - UFC
 
 - Atividade 01 - Implementação da Criptografia Playfair
 - Atividade 02 - Implementação do Algoritmo de Vigenere e tentativas de descriptografia da mensagem
 - Atividade 03 - Respostas para as perguntas da Aula S03E02
 - Atividade 04 - Prática com tutorial de GPG
-- Apresentação de Prática em sala: Metasploit Framework (Meterpreter)
+- Atividades Práticas
+    - Apresentação de Prática em sala: Metasploit Framework (Meterpreter)
+    - Atividade do tutorial: SQL Injection
