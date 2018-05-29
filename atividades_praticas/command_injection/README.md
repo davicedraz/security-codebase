@@ -21,6 +21,6 @@ Escolhi um diretório qualquer na raiz do servidor e listar seu conteúdo.
 
 >http://commandinjection.herokuapp.com/?dir=files;cat davicedraz.txt
 
-![SQL](listar_arquivo.jpg)
+![SQL](https://raw.githubusercontent.com/davicedraz/security/master/atividades_praticas/command_injection/listar_arquivo.JPG)
 
 No geral, não tive dificuldades para executar as atividades propostas e achei o tutorial muito interessante. O mesmo pode ser aplicado a outros servidores com vulnerabilidades a serem exploradas por command injection.
