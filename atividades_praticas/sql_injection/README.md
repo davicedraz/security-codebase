@@ -8,6 +8,6 @@ Não tive dificuldade para seguir os passos e obter o resultado esperado ao fim 
 - Planilha com usuários do sistema alvo 
 
 
-![SQL](pratica-sqlinjection.jpg)
+![SQL](https://github.com/davicedraz/security/blob/master/atividades_praticas/sql_injection/pratica-sqlinjection.JPG?raw=true)
 
 No geral, os tutoriais (https://github.com/leojaimesson/tutorial-sql-injection) são bem explicativos e didáticos, aprendi na prática os conceitos de SQL Injection e utilizar a ferramenta SQLmap
