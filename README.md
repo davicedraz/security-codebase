@@ -9,3 +9,4 @@ Repositório para relatórios e códigos da disciplina de Segurança da Informa�
     - Apresentação de Prática em sala: Metasploit Framework (Meterpreter)
     - Atividade do tutorial: SQL Injection
     - Atividade do tutorial: Command Injection
+    - Atividade do tutorial: Local File Inclusion
