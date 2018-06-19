@@ -1,1 +1,6 @@
-
+- Apresentação de Prática em sala: Metasploit Framework (Meterpreter)
+- Atividade do tutorial: SQL Injection
+- Atividade do tutorial: Command Injection
+- Atividade do tutorial: Local File Inclusion
+- Atividade do tutorial: TOR
+- Atividade do tutorial: IDS (Intrusion Detection System)
